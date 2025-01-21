@@ -11,9 +11,12 @@
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <junit.jupiter.engine.vesion>5.9.1</junit.jupiter.engine.vesion>
-    <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.jupiter.engine.vesion>5.9.1</junit.jupiter.engine.vesion>
+    <logback.version>1.5.12</logback.version>
+    <lombok.version>1.18.36</lombok.version>
+    <slf4j.api.version>2.0.16</slf4j.api.version>
+    <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
   </properties>
 
   <dependencies>
@@ -22,6 +25,22 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.jupiter.engine.vesion}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
     </dependency>
   </dependencies>
 
