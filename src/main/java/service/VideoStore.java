@@ -5,7 +5,8 @@ import model.*;
 
 @Slf4j
 public class VideoStore {
-
+  // should this be a method on the statement class instead?
+  // can this be made more OOP by extracting cost and points? does that make more sense?
   public Statement generateStatement(User user, Rental... rentals) {
     double totalCost = 0.0;
     int rentalPoints = 0;
@@ -48,6 +49,8 @@ public class VideoStore {
       default -> throw new RuntimeException();
     }
   }
+
+  // TODO: extract these hardcoded values into env vars, make more configurable
 
   private ProcessMoviePointsCost processChildrensMovie(int numberOfDays) {
     int points = 1;
