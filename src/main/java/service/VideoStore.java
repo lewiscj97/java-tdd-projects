@@ -6,7 +6,7 @@ import model.*;
 @Slf4j
 public class VideoStore {
 
-  public Statement getStatement(User user, Rental... rentals) throws Exception {
+  public Statement generateStatement(User user, Rental... rentals) throws Exception {
     Statement statement = new Statement();
     statement.setUser(user);
 
