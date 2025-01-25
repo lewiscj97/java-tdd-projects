@@ -2,6 +2,8 @@ import model.*;
 import org.junit.jupiter.api.Test;
 import service.VideoStore;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class TestClass {
 
   VideoStore videoStore = new VideoStore();
@@ -15,5 +17,8 @@ public class TestClass {
     Rental rental = new Rental(crazyNotes, numberOfDays);
 
     Statement statement = videoStore.getStatement(user, rental);
+    assertEquals(1, statement.getRentalPoints());
+    assertEquals(2.0, statement.getTotalCost());
+    assertEquals(name, statement.getUser().getName());
   }
 }
