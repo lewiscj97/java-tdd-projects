@@ -6,7 +6,7 @@ import model.*;
 @Slf4j
 public class VideoStore {
 
-  public Statement generateStatement(User user, Rental... rentals) throws Exception {
+  public Statement generateStatement(User user, Rental... rentals) {
     Statement statement = new Statement();
     statement.setUser(user);
 
@@ -15,11 +15,9 @@ public class VideoStore {
 
     for (Rental rental : rentals) {
       int numberOfDays = rental.getNumberOfDays();
-      ProcessMoviePointsCost moviePointsCost = switch (rental.getMovie().getType()) {
-        case REGULAR -> processRegularMovie(numberOfDays);
-        case NEW -> processNewMovie(numberOfDays);
-        case CHILDRENS -> processChildrensMovie(numberOfDays);
-      };
+      BookType bookType = rental.getMovie().getType();
+
+      ProcessMoviePointsCost moviePointsCost = processMoviePointsCost(numberOfDays, bookType);
 
       totalCost += moviePointsCost.getCost();
       rentalPoints += moviePointsCost.getPoints();
@@ -29,6 +27,21 @@ public class VideoStore {
     statement.setRentalPoints(rentalPoints);
 
     return statement;
+  }
+
+  private ProcessMoviePointsCost processMoviePointsCost(int numberOfDays, BookType bookType) {
+    switch (bookType) {
+      case REGULAR -> {
+        return processRegularMovie(numberOfDays);
+      }
+      case NEW -> {
+        return processNewMovie(numberOfDays);
+      }
+      case CHILDRENS -> {
+        return processChildrensMovie(numberOfDays);
+      }
+      default -> throw new RuntimeException();
+    }
   }
 
   private ProcessMoviePointsCost processChildrensMovie(int numberOfDays) {

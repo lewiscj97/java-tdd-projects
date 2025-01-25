@@ -15,7 +15,7 @@ public class TestClass {
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2})
-  public void generateStatementForUser_OneRegularMovie_2Pound_FirstTwoDays(int numberOfDays) throws Exception {
+  public void generateStatementForUser_OneRegularMovie_2Pound_FirstTwoDays(int numberOfDays) {
     Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
     Rental rental = new Rental(crazyNotes, numberOfDays);
 
@@ -26,7 +26,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneRegularMovie_ExtraOneFiftySubsequentDays() throws Exception {
+  public void generateStatementForUser_OneRegularMovie_ExtraOneFiftySubsequentDays() {
     Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
     Rental rental = new Rental(crazyNotes, 3);
 
@@ -37,7 +37,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneNewReleaseMovie_OneDay() throws Exception {
+  public void generateStatementForUser_OneNewReleaseMovie_OneDay() {
     Movie newMovie = new Movie("New movie", BookType.NEW);
     Rental rental = new Rental(newMovie, 1);
 
@@ -48,7 +48,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneNewReleaseMovie_TwoDays() throws Exception {
+  public void generateStatementForUser_OneNewReleaseMovie_TwoDays() {
     Movie newMovie = new Movie("New movie", BookType.NEW);
     Rental rental = new Rental(newMovie, 2);
 
@@ -60,7 +60,7 @@ public class TestClass {
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
-  public void generateStatementForUser_OneChildrensMovie_OneToThreeDays(int numberOfDays) throws Exception {
+  public void generateStatementForUser_OneChildrensMovie_OneToThreeDays(int numberOfDays) {
     Movie childrensMovie = new Movie("Children's movie", BookType.CHILDRENS);
     Rental rental = new Rental(childrensMovie, numberOfDays);
 
@@ -71,7 +71,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneChildrensMovie_MoreThanThreeDays() throws Exception {
+  public void generateStatementForUser_OneChildrensMovie_MoreThanThreeDays() {
     Movie childrensMovie = new Movie("Children's movie", BookType.CHILDRENS);
     Rental rental = new Rental(childrensMovie, 4);
 
@@ -82,7 +82,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneEachTypeMovie_OneDay() throws Exception {
+  public void generateStatementForUser_OneEachTypeMovie_OneDay() {
     Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
     Movie newMovie = new Movie("New movie", BookType.NEW);
     Movie childrensMovie = new Movie("Children's movie", BookType.CHILDRENS);
