@@ -1,5 +1,7 @@
 import model.*;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import service.VideoStore;
 
@@ -20,6 +22,19 @@ public class TestClass {
     Statement statement = videoStore.getStatement(user, rental);
     assertEquals(1, statement.getRentalPoints());
     assertEquals(2.0, statement.getTotalCost());
+    assertEquals(name, statement.getUser().getName());
+  }
+
+  @Test
+  public void generateStatementForUser_OneRegularMovie_ExtraOneFiftySubsequentDays() {
+    String name = "Tester McGee";
+    User user = new User(name);
+    Movie crazyNotes = new RegularMovie("Crazynotes");
+    Rental rental = new Rental(crazyNotes, 3);
+
+    Statement statement = videoStore.getStatement(user, rental);
+    assertEquals(1, statement.getRentalPoints());
+    assertEquals(3.5, statement.getTotalCost());
     assertEquals(name, statement.getUser().getName());
   }
 }
