@@ -59,14 +59,26 @@ public class TestClass {
     assertEquals(name, statement.getUser().getName());
   }
 
-  @Test
-  public void generateStatementForUser_OneChildrensMovie_OneDay() throws Exception {
+  @ParameterizedTest
+  @ValueSource(ints = {1, 2, 3})
+  public void generateStatementForUser_OneChildrensMovie_OneToThreeDays(int numberOfDays) throws Exception {
     Movie childrensMovie = new ChildrensMovie("Children's movie");
-    Rental rental = new Rental(childrensMovie, 1);
+    Rental rental = new Rental(childrensMovie, numberOfDays);
 
     Statement statement = videoStore.getStatement(user, rental);
     assertEquals(1, statement.getRentalPoints());
     assertEquals(1.5, statement.getTotalCost());
+    assertEquals(name, statement.getUser().getName());
+  }
+
+  @Test
+  public void generateStatementForUser_OneChildrensMovie_MoreThanThreeDays() throws Exception {
+    Movie childrensMovie = new ChildrensMovie("Children's movie");
+    Rental rental = new Rental(childrensMovie, 4);
+
+    Statement statement = videoStore.getStatement(user, rental);
+    assertEquals(1, statement.getRentalPoints());
+    assertEquals(3.0, statement.getTotalCost());
     assertEquals(name, statement.getUser().getName());
   }
 }
