@@ -16,7 +16,7 @@ public class TestClass {
 
   @ParameterizedTest
   @ValueSource(ints = {1, 2})
-  public void generateStatementForUser_OneRegularMovie_2Pound_FirstTwoDays(int numberOfDays) {
+  public void generateStatementForUser_OneRegularMovie_2Pound_FirstTwoDays(int numberOfDays) throws Exception {
     Movie crazyNotes = new RegularMovie("Crazynotes");
     Rental rental = new Rental(crazyNotes, numberOfDays);
 
@@ -27,7 +27,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneRegularMovie_ExtraOneFiftySubsequentDays() {
+  public void generateStatementForUser_OneRegularMovie_ExtraOneFiftySubsequentDays() throws Exception {
     Movie crazyNotes = new RegularMovie("Crazynotes");
     Rental rental = new Rental(crazyNotes, 3);
 
@@ -38,7 +38,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneNewReleaseMovie_OneDay() {
+  public void generateStatementForUser_OneNewReleaseMovie_OneDay() throws Exception {
     Movie newMovie = new NewReleaseMovie("New movie");
     Rental rental = new Rental(newMovie, 1);
 
@@ -49,7 +49,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneNewReleaseMovie_TwoDays() {
+  public void generateStatementForUser_OneNewReleaseMovie_TwoDays() throws Exception {
     Movie newMovie = new NewReleaseMovie("New movie");
     Rental rental = new Rental(newMovie, 2);
 
@@ -60,7 +60,7 @@ public class TestClass {
   }
 
   @Test
-  public void generateStatementForUser_OneChildrensMovie_OneDay() {
+  public void generateStatementForUser_OneChildrensMovie_OneDay() throws Exception {
     Movie childrensMovie = new ChildrensMovie("Children's movie");
     Rental rental = new Rental(childrensMovie, 1);
 

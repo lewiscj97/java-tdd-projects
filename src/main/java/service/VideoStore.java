@@ -6,7 +6,7 @@ import model.*;
 @Slf4j
 public class VideoStore {
 
-  public Statement getStatement(User user, Rental... rentals) {
+  public Statement getStatement(User user, Rental... rentals) throws Exception {
     Statement statement = new Statement();
     statement.setUser(user);
 
@@ -19,11 +19,13 @@ public class VideoStore {
       ProcessMoviePointsCost moviePointsCost;
 
       if (movieType.equals(RegularMovie.class)) {
-        moviePointsCost = processRegularMovies(numberOfDays);
+        moviePointsCost = processRegularMovie(numberOfDays);
       } else if (movieType.equals(NewReleaseMovie.class)) {
-        moviePointsCost = processNewMovies(numberOfDays);
+        moviePointsCost = processNewMovie(numberOfDays);
+      } else if (movieType.equals(ChildrensMovie.class)){
+        moviePointsCost = processChildrensMovie(numberOfDays);
       } else {
-        moviePointsCost = new ProcessMoviePointsCost();
+        throw new Exception("Invalid movie type");
       }
 
       totalCost += moviePointsCost.getCost();
@@ -36,14 +38,21 @@ public class VideoStore {
     return statement;
   }
 
-  private ProcessMoviePointsCost processRegularMovies(int numberOfDays) {
+  private ProcessMoviePointsCost processChildrensMovie(int numberOfDays) {
+    int points = 1;
+    double cost = 1.5;
+
+    return new ProcessMoviePointsCost(points, cost);
+  }
+
+  private ProcessMoviePointsCost processRegularMovie(int numberOfDays) {
     int points = 1;
     double cost = (numberOfDays <= 2) ? 2 : 2 + (numberOfDays - 2) * 1.5;
 
     return new ProcessMoviePointsCost(points, cost);
   }
 
-  private ProcessMoviePointsCost processNewMovies(int numberOfDays) {
+  private ProcessMoviePointsCost processNewMovie(int numberOfDays) {
     double cost = numberOfDays * 3;
     int points = (numberOfDays == 1) ? 1 : 2;
 
