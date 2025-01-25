@@ -26,6 +26,8 @@ public class VideoStore {
       } else if (movieType.equals(NewReleaseMovie.class)) {
         if (numberOfDays == 1) {
           rentalPoints++;
+        } else {
+          rentalPoints += 2;
         }
         totalCost += numberOfDays * 3;
       }
