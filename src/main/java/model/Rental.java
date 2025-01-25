@@ -1,12 +1,13 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.*;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 public class Rental {
 
-  private Movie movie;
-  private int numberOfDays;
+  @NonNull private Movie movie;
+  @NonNull private int numberOfDays;
+  @Setter
+  private double cost;
 }

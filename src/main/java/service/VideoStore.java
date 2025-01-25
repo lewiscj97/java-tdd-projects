@@ -7,20 +7,25 @@ import model.*;
 public class VideoStore {
 
   public Statement generateStatement(User user, Rental... rentals) {
-    Statement statement = new Statement();
-    statement.setUser(user);
-
     double totalCost = 0.0;
     int rentalPoints = 0;
+
+    Statement statement = new Statement();
+    statement.setUser(user);
 
     for (Rental rental : rentals) {
       int numberOfDays = rental.getNumberOfDays();
       BookType bookType = rental.getMovie().getType();
 
       ProcessMoviePointsCost moviePointsCost = processMoviePointsCost(numberOfDays, bookType);
+      double cost = moviePointsCost.getCost();
 
-      totalCost += moviePointsCost.getCost();
+      rental.setCost(cost);
+
+      totalCost += cost;
       rentalPoints += moviePointsCost.getPoints();
+
+      statement.getRentals().add(rental);
     }
 
     statement.setTotalCost(totalCost);
