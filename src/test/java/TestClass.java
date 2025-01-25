@@ -16,7 +16,7 @@ public class TestClass {
   @ParameterizedTest
   @ValueSource(ints = {1, 2})
   public void generateStatementForUser_OneRegularMovie_2Pound_FirstTwoDays(int numberOfDays) throws Exception {
-    Movie crazyNotes = new RegularMovie("Crazynotes");
+    Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
     Rental rental = new Rental(crazyNotes, numberOfDays);
 
     Statement statement = videoStore.generateStatement(user, rental);
@@ -27,7 +27,7 @@ public class TestClass {
 
   @Test
   public void generateStatementForUser_OneRegularMovie_ExtraOneFiftySubsequentDays() throws Exception {
-    Movie crazyNotes = new RegularMovie("Crazynotes");
+    Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
     Rental rental = new Rental(crazyNotes, 3);
 
     Statement statement = videoStore.generateStatement(user, rental);
@@ -38,7 +38,7 @@ public class TestClass {
 
   @Test
   public void generateStatementForUser_OneNewReleaseMovie_OneDay() throws Exception {
-    Movie newMovie = new NewReleaseMovie("New movie");
+    Movie newMovie = new Movie("New movie", BookType.NEW);
     Rental rental = new Rental(newMovie, 1);
 
     Statement statement = videoStore.generateStatement(user, rental);
@@ -49,7 +49,7 @@ public class TestClass {
 
   @Test
   public void generateStatementForUser_OneNewReleaseMovie_TwoDays() throws Exception {
-    Movie newMovie = new NewReleaseMovie("New movie");
+    Movie newMovie = new Movie("New movie", BookType.NEW);
     Rental rental = new Rental(newMovie, 2);
 
     Statement statement = videoStore.generateStatement(user, rental);
@@ -61,7 +61,7 @@ public class TestClass {
   @ParameterizedTest
   @ValueSource(ints = {1, 2, 3})
   public void generateStatementForUser_OneChildrensMovie_OneToThreeDays(int numberOfDays) throws Exception {
-    Movie childrensMovie = new ChildrensMovie("Children's movie");
+    Movie childrensMovie = new Movie("Children's movie", BookType.CHILDRENS);
     Rental rental = new Rental(childrensMovie, numberOfDays);
 
     Statement statement = videoStore.generateStatement(user, rental);
@@ -72,7 +72,7 @@ public class TestClass {
 
   @Test
   public void generateStatementForUser_OneChildrensMovie_MoreThanThreeDays() throws Exception {
-    Movie childrensMovie = new ChildrensMovie("Children's movie");
+    Movie childrensMovie = new Movie("Children's movie", BookType.CHILDRENS);
     Rental rental = new Rental(childrensMovie, 4);
 
     Statement statement = videoStore.generateStatement(user, rental);
@@ -83,9 +83,9 @@ public class TestClass {
 
   @Test
   public void generateStatementForUser_OneEachTypeMovie_OneDay() throws Exception {
-    Movie crazyNotes = new RegularMovie("Crazynotes");
-    Movie newMovie = new NewReleaseMovie("New movie");
-    Movie childrensMovie = new ChildrensMovie("Children's movie");
+    Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
+    Movie newMovie = new Movie("New movie", BookType.NEW);
+    Movie childrensMovie = new Movie("Children's movie", BookType.CHILDRENS);
     int numberOfDays = 1;
 
     Rental regularRental = new Rental(crazyNotes, numberOfDays);

@@ -14,19 +14,12 @@ public class VideoStore {
     int rentalPoints = 0;
 
     for (Rental rental : rentals) {
-      Class<? extends Movie> movieType = rental.getMovie().getClass();
       int numberOfDays = rental.getNumberOfDays();
-      ProcessMoviePointsCost moviePointsCost;
-
-      if (movieType.equals(RegularMovie.class)) {
-        moviePointsCost = processRegularMovie(numberOfDays);
-      } else if (movieType.equals(NewReleaseMovie.class)) {
-        moviePointsCost = processNewMovie(numberOfDays);
-      } else if (movieType.equals(ChildrensMovie.class)){
-        moviePointsCost = processChildrensMovie(numberOfDays);
-      } else {
-        throw new Exception("Invalid movie type");
-      }
+      ProcessMoviePointsCost moviePointsCost = switch (rental.getMovie().getType()) {
+        case REGULAR -> processRegularMovie(numberOfDays);
+        case NEW -> processNewMovie(numberOfDays);
+        case CHILDRENS -> processChildrensMovie(numberOfDays);
+      };
 
       totalCost += moviePointsCost.getCost();
       rentalPoints += moviePointsCost.getPoints();
