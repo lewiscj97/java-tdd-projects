@@ -37,4 +37,17 @@ public class TestClass {
     assertEquals(3.5, statement.getTotalCost());
     assertEquals(name, statement.getUser().getName());
   }
+
+  @Test
+  public void generateStatementForUser_OneNewReleaseMovie_OneDay() {
+    String name = "Tester McGee";
+    User user = new User(name);
+    Movie newMovie = new NewReleaseMovie("New movie");
+    Rental rental = new Rental(newMovie, 1);
+
+    Statement statement = videoStore.getStatement(user, rental);
+    assertEquals(1, statement.getRentalPoints());
+    assertEquals(3.0, statement.getTotalCost());
+    assertEquals(name, statement.getUser().getName());
+  }
 }
