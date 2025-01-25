@@ -8,5 +8,5 @@ import lombok.Getter;
 public class Rental {
 
   private Movie movie;
-  private Integer numberOfDays;
+  private int numberOfDays;
 }

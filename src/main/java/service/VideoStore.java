@@ -13,13 +13,13 @@ public class VideoStore {
     Statement statement = new Statement();
     statement.setUser(user);
 
-    Double totalCost = 0.0;
-    Integer rentalPoints = 0;
+    double totalCost = 0.0;
+    int rentalPoints = 0;
 
     for (Rental rental : rentals) {
       if (rental.getMovie().getClass().equals(RegularMovie.class)) {
         rentalPoints++;
-        if (rental.getNumberOfDays() == 1) {
+        if (rental.getNumberOfDays() <= 2) {
           totalCost += 2;
         }
       }
