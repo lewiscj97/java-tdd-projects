@@ -121,4 +121,28 @@ public class TestClass {
 
     assertEquals(expectedStatement, statement.toString());
   }
+
+  @Test
+  public void generateStatementForUser_StringDifferentBookTypes() {
+    Movie crazyNotes = new Movie("Crazynotes", BookType.REGULAR);
+    Movie teeth = new Movie("Teeth", BookType.NEW);
+    Movie theWeb = new Movie("The Web", BookType.CHILDRENS);
+
+    Rental regularRental = new Rental(crazyNotes, 1);
+    Rental newRental = new Rental(teeth, 4);
+    Rental childrensRental = new Rental(theWeb, 2);
+
+    Statement statement = videoStore.generateStatement(user, regularRental, newRental, childrensRental);
+
+    String expectedStatement = """
+        Rental Record for Tester McGee
+          Crazynotes  £2.0
+          Teeth  £12.0
+          The Web  £1.5
+        You owe £15.5
+        You earned 4 frequent renter points
+        """;
+
+    assertEquals(expectedStatement, statement.toString());
+  }
 }
