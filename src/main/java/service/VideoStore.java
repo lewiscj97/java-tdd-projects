@@ -19,8 +19,11 @@ public class VideoStore {
     for (Rental rental : rentals) {
       if (rental.getMovie().getClass().equals(RegularMovie.class)) {
         rentalPoints++;
-        if (rental.getNumberOfDays() <= 2) {
+        int numberOfDays = rental.getNumberOfDays();
+        if (numberOfDays <= 2) {
           totalCost += 2;
+        } else {
+          totalCost = 2 + (numberOfDays - 2) * 1.5;
         }
       }
     }
