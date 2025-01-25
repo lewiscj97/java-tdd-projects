@@ -7,4 +7,4 @@ Each problem will have its own feature branch (`f-<project-name>`).
 
 This is where the directory of problems will go, e.g.
 
-- Fizzbuzz, `f-fizzbuzz`
+- Video store, [f-videostore](https://github.com/lewiscj97/java-tdd-projects/tree/f-videostore)
