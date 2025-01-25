@@ -40,7 +40,7 @@ public class VideoStore {
 
   private ProcessMoviePointsCost processChildrensMovie(int numberOfDays) {
     int points = 1;
-    double cost = 1.5;
+    double cost = (numberOfDays <= 3) ? 1.5 : 1.5 + (numberOfDays - 3) * 1.5;
 
     return new ProcessMoviePointsCost(points, cost);
   }
