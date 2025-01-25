@@ -81,4 +81,21 @@ public class TestClass {
     assertEquals(3.0, statement.getTotalCost());
     assertEquals(name, statement.getUser().getName());
   }
+
+  @Test
+  public void generateStatementForUser_OneEachTypeMovie_OneDay() throws Exception {
+    Movie crazyNotes = new RegularMovie("Crazynotes");
+    Movie newMovie = new NewReleaseMovie("New movie");
+    Movie childrensMovie = new ChildrensMovie("Children's movie");
+    int numberOfDays = 1;
+
+    Rental regularRental = new Rental(crazyNotes, numberOfDays);
+    Rental newRental = new Rental(newMovie, numberOfDays);
+    Rental childrensRental = new Rental(childrensMovie, numberOfDays);
+
+    Statement statement = videoStore.getStatement(user, regularRental, newRental, childrensRental);
+    assertEquals(3, statement.getRentalPoints());
+    assertEquals(6.5, statement.getTotalCost());
+    assertEquals(name, statement.getUser().getName());
+  }
 }
