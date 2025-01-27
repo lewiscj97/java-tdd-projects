@@ -1,19 +1,20 @@
+package service;
+
 import model.Product;
 import model.ProductType;
 import org.junit.jupiter.api.Test;
-import service.ApiService;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestClass {
+public class ProductPriceServiceTest {
 
-  ApiService apiService = new ApiService();
+  ProductPriceService productPriceService = new ProductPriceService();
 
   @Test
   public void getProductsList() throws Exception{
-    List<Product> productList = apiService.callApi();
+    List<Product> productList = productPriceService.callApi();
 
     assertEquals(10, productList.size());
     assertEquals("Sainsbury's Skin on ASC Scottish Salmon Fillets x2 240g", productList.getFirst().name());
