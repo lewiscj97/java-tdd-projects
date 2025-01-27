@@ -25,7 +25,10 @@ public class ProductPriceService {
     try {
       this.productList = callApiGetProductList();
       this.productPriceList = callApiGetProductPriceList();
-    } catch (Exception ignored) {
+    } catch (Exception e) {
+      log.error("Failed to fetch data during initialization", e);
+      this.productList = new ArrayList<>();
+      this.productPriceList = new ArrayList<>();
     }
   }
 
