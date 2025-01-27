@@ -1,6 +1,7 @@
 package service;
 
 import model.Product;
+import model.ProductPrice;
 import model.ProductType;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,11 @@ public class ProductPriceServiceTest {
   public void getProductPriceList() throws Exception {
     List<ProductPrice> productPriceList = productPriceService.getProductPriceList();
 
-    assertEquals(10, productList.size());
+    assertEquals(10, productPriceList.size());
+    assertEquals("6447344", productPriceList.getFirst().productUid());
+    assertEquals(15.63, productPriceList.getFirst().unitPrice());
+    assertEquals("kg", productPriceList.getFirst().unitPriceMeasure());
+    assertEquals(1, productPriceList.getFirst().unitPriceMeasureAmount());
   }
 
 }
