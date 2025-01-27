@@ -11,6 +11,8 @@ import util.RestUtil;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Getter
 @Slf4j
@@ -34,13 +36,13 @@ public class ProductPriceService {
   }
 
   public List<UnifiedProduct> getUnifiedProductList() {
+    Map<String, ProductPrice> uidProductPrice = productPriceList.stream()
+        .collect(Collectors.toMap(ProductPrice::productUid, price -> price));
+
     List<UnifiedProduct> unifiedProducts = new ArrayList<>();
+
     for (Product product : this.productList) {
-      ProductPrice productPrice = this.productPriceList
-          .stream()
-          .filter(price -> price.productUid().equals(product.productUid()))
-          .findFirst()
-          .get();
+      ProductPrice productPrice = uidProductPrice.get(product.productUid());
 
       UnifiedProduct unifiedProduct = new UnifiedProduct(
           product.productUid(),
