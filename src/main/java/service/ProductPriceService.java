@@ -19,7 +19,7 @@ public class ProductPriceService {
 
   private static final Gson gson = new Gson();
 
-  public List<Product> callApi() throws Exception {
+  public List<Product> getProductList() throws Exception {
     Type listType = new TypeToken<ArrayList<Product>>(){}.getType();
     URL url = new URI(productUrl).toURL();
     InputStreamReader reader = new InputStreamReader(url.openStream());

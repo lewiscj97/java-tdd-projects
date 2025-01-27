@@ -14,7 +14,7 @@ public class ProductPriceServiceTest {
 
   @Test
   public void getProductsList() throws Exception {
-    List<Product> productList = productPriceService.callApi();
+    List<Product> productList = productPriceService.getProductList();
 
     assertEquals(10, productList.size());
     assertEquals("Sainsbury's Skin on ASC Scottish Salmon Fillets x2 240g", productList.getFirst().name());
