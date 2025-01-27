@@ -13,7 +13,7 @@ public class ProductPriceServiceTest {
   ProductPriceService productPriceService = new ProductPriceService();
 
   @Test
-  public void getProductsList() throws Exception{
+  public void getProductsList() throws Exception {
     List<Product> productList = productPriceService.callApi();
 
     assertEquals(10, productList.size());
@@ -21,6 +21,13 @@ public class ProductPriceServiceTest {
     assertEquals("6447344", productList.getFirst().productUid());
     assertEquals(ProductType.BASIC, productList.getFirst().productType());
     assertEquals("https://www.sainsburys.co.uk/gol-ui/product/sainsburys-responsibly-sourced-scottish-salmon-fillet-x2-240g", productList.getFirst().fullUrl());
+  }
+
+  @Test
+  public void getProductPriceList() throws Exception {
+    List<ProductPrice> productPriceList = productPriceService.getProductPriceList();
+
+    assertEquals(10, productList.size());
   }
 
 }
