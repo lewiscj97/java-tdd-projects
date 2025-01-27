@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import model.Product;
 import model.ProductPrice;
+import model.UnifiedProduct;
 import util.RestUtil;
 
 import java.lang.reflect.Type;
@@ -30,6 +31,30 @@ public class ProductPriceService {
       this.productList = new ArrayList<>();
       this.productPriceList = new ArrayList<>();
     }
+  }
+
+  public List<UnifiedProduct> getUnifiedProductList() {
+    List<UnifiedProduct> unifiedProducts = new ArrayList<>();
+    for (Product product : this.productList) {
+      ProductPrice productPrice = this.productPriceList
+          .stream()
+          .filter(price -> price.productUid().equals(product.productUid()))
+          .findFirst()
+          .get();
+
+      UnifiedProduct unifiedProduct = new UnifiedProduct(
+          product.productUid(),
+          product.name(),
+          product.productType(),
+          product.fullUrl(),
+          productPrice.unitPrice(),
+          productPrice.unitPriceMeasure(),
+          productPrice.unitPriceMeasureAmount()
+      );
+      unifiedProducts.add(unifiedProduct);
+    }
+
+    return unifiedProducts;
   }
 
   private List<ProductPrice> callApiGetProductPriceList() throws Exception {
