@@ -35,4 +35,18 @@ public class ProductPriceServiceTest {
     assertEquals(1, productPriceList.getFirst().unitPriceMeasureAmount());
   }
 
+  @Test
+  public void getUnifiedProductList() throws Exception {
+    List<UnifiedProduct> unifiedProducts = productPriceService.getUnifiedProductList();
+
+    assertEquals(10, unifiedProducts.size());
+    assertEquals("6447344", unifiedProducts.getFirst().productUid());
+    assertEquals("Sainsbury's Skin on ASC Scottish Salmon Fillets x2 240g", unifiedProducts.getFirst().name());
+    assertEquals(ProductType.BASIC, unifiedProducts.getFirst().productType());
+    assertEquals("https://www.sainsburys.co.uk/gol-ui/product/sainsburys-responsibly-sourced-scottish-salmon-fillet-x2-240g", unifiedProducts.getFirst().fullUrl());
+    assertEquals(15.63, unifiedProducts.getFirst().unitPrice());
+    assertEquals("kg", unifiedProducts.getFirst().unitPriceMeasure());
+    assertEquals(1, unifiedProducts.getFirst().unitPriceMeasureAmount());
+  }
+
 }
