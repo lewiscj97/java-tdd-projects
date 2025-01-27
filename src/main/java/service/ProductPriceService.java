@@ -36,6 +36,12 @@ public class ProductPriceService {
   }
 
   public List<UnifiedProduct> getUnifiedProductList() {
+
+    if (productList.isEmpty() || productPriceList.isEmpty()) {
+      log.debug("Returning empty array due to empty products and prices");
+      return new ArrayList<>();
+    }
+
     Map<String, ProductPrice> uidProductPrice = productPriceList.stream()
         .collect(Collectors.toMap(ProductPrice::productUid, price -> price));
 
@@ -44,7 +50,7 @@ public class ProductPriceService {
     for (Product product : this.productList) {
       ProductPrice productPrice = uidProductPrice.get(product.productUid());
 
-      UnifiedProduct unifiedProduct = new UnifiedProduct(
+      unifiedProducts.add(new UnifiedProduct(
           product.productUid(),
           product.name(),
           product.productType(),
@@ -52,8 +58,7 @@ public class ProductPriceService {
           productPrice.unitPrice(),
           productPrice.unitPriceMeasure(),
           productPrice.unitPriceMeasureAmount()
-      );
-      unifiedProducts.add(unifiedProduct);
+      ));
     }
 
     return unifiedProducts;

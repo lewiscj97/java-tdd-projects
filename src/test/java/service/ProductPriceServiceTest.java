@@ -37,7 +37,7 @@ public class ProductPriceServiceTest {
   }
 
   @Test
-  public void getUnifiedProductList() throws Exception {
+  public void getUnifiedProductList() {
     List<UnifiedProduct> unifiedProducts = productPriceService.getUnifiedProductList();
 
     assertEquals(10, unifiedProducts.size());
