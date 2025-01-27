@@ -8,3 +8,5 @@ Each problem will have its own feature branch (`f-<project-name>`).
 This is where the directory of problems will go, e.g.
 
 - Video store, [f-videostore](https://github.com/lewiscj97/java-tdd-projects/tree/f-videostore)
+- Product price list (calling REST APIs), [f-apicalls](https://github.com/lewiscj97/java-tdd-projects/tree/f-apicalls)
+- Tennis, [f-tennis](https://github.com/lewiscj97/java-tdd-projects/tree/f-tennis)
