@@ -21,9 +21,13 @@ public class ProductPriceService {
 
   public List<Product> getProductList() throws Exception {
     Type listType = new TypeToken<ArrayList<Product>>(){}.getType();
-    URL url = new URI(productUrl).toURL();
+    return getResponseFromApi(productUrl, listType);
+  }
+
+  private <T> T getResponseFromApi(String inputUrl, Type type) throws Exception{
+    URL url = new URI(inputUrl).toURL();
     InputStreamReader reader = new InputStreamReader(url.openStream());
-    return gson.fromJson(reader, listType);
+    return gson.fromJson(reader, type);
   }
 
 }
