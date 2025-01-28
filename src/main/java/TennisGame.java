@@ -12,12 +12,20 @@ public class TennisGame {
   Player player2;
 
   public String getScore() {
-    return player1.getScore() + "," + player2.getScore();
+    return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
   }
 
   public void score(Player player) {
     int currentScore = player.getScore();
     player.setScore(currentScore + 1);
+  }
+
+  private int getTennisScore(int score) {
+    return switch (score) {
+      case 1 -> 15;
+      case 2 -> 30;
+      default -> 0;
+    };
   }
 
 }

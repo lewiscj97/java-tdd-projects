@@ -33,9 +33,16 @@ public class TestClass {
   }
 
   @Test
-  public void getScoreReturnsScoreInCorrectFormat() {
+  public void getScoreReturnsScoreInCorrectFormat_NilNil() {
     String score = game.getScore();
     assertEquals("0,0", score);
+  }
+
+  @Test
+  public void getScoreReturnsScoreInCorrectFormat_15Nill() {
+    game.score(player1);
+    String score = game.getScore();
+    assertEquals("15,0", score);
   }
 
 }
