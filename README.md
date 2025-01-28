@@ -8,7 +8,7 @@ Rather than using standard Tennis scoring, we consider scoring in Wii tennis, wh
 
 The scoring system is as follows:
 
-1. Each player can have either of these points in one game 0 15 30 40 
+1. Each player can have either of these points in one game: `0 15 30 40` 
 2. If you have 40 and you win the ball you win the game, however there are special rules. 
 3. If both have 40 the players are deuce.
 
