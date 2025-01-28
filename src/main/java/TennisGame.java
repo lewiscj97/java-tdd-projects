@@ -18,9 +18,9 @@ public class TennisGame {
       return player2.getName() + " wins!";
     } else if (player1.getScore() == player2.getScore() && player1.getScore() >= 3) {
       return "Deuce!";
-    } else if (player1.getScore() > player2.getScore() && player1.getScore() >= 3) {
+    } else if (player1.getScore() > 3 && player1.getScore() == player2.getScore() + 1) {
       return "Advantage " + player1.getName() + "!";
-    } else if (player2.getScore() > player1.getScore() && player1.getScore() >= 3) {
+    } else if (player2.getScore() > 3 && player2.getScore() == player1.getScore() + 1) {
       return "Advantage " + player2.getName() + "!";
     } else {
       return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
