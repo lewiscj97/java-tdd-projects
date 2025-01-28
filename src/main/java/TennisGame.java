@@ -30,6 +30,7 @@ public class TennisGame {
     return switch (score) {
       case 1 -> 15;
       case 2 -> 30;
+      case 3 -> 40;
       default -> 0;
     };
   }

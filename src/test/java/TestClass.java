@@ -70,4 +70,25 @@ public class TestClass {
     assertEquals("player 2 wins!", score);
   }
 
+  @Test
+  public void getScoreReturnsScoreInCorrectFormat_ThirtyFifteen() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    String score = game.getScore();
+
+    assertEquals("30,15", score);
+  }
+
+  @Test
+  public void getScoreReturnsScoreInCorrectFormat_FourtyFifteen() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    String score = game.getScore();
+
+    assertEquals("40,15", score);
+  }
+
 }
