@@ -8,31 +8,47 @@ import model.Player;
 @AllArgsConstructor
 public class TennisGame {
 
+  private final int DEUCE_THRESHOLD = 3;
+  private final int WINNING_DIFFERENCE = 2;
+  private final int ADVANTAGE_DIFFERENCE = 1;
+
   Player player1;
   Player player2;
 
   public String getScore() {
     if (hasWinner(player1, player2)) {
-      return player1.getName() + " wins!";
+      return formatWinningMessage(player1);
     } else if (hasWinner(player2, player1)) {
-      return player2.getName() + " wins!";
-    } else if (player1.getScore() == player2.getScore() && player1.getScore() >= 3) {
+      return formatWinningMessage(player2);
+    } else if (hasDeuce()) {
       return "Deuce!";
     } else if (hasAdvantage(player1, player2)) {
-      return "Advantage " + player1.getName() + "!";
+      return formatAdvantageMessage(player1);
     } else if (hasAdvantage(player2, player1)) {
-      return "Advantage " + player2.getName() + "!";
+      return formatAdvantageMessage(player2);
     } else {
       return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
     }
   }
 
+  private String formatAdvantageMessage(Player advantaged) {
+    return "Advantage " + advantaged.getName() + "!";
+  }
+
+  private String formatWinningMessage(Player player) {
+    return player.getName() + " wins!";
+  }
+
   private boolean hasAdvantage(Player advantaged, Player notAdvantaged) {
-    return advantaged.getScore() > 3 && advantaged.getScore() == notAdvantaged.getScore() + 1;
+    return advantaged.getScore() > DEUCE_THRESHOLD && advantaged.getScore() == notAdvantaged.getScore() + ADVANTAGE_DIFFERENCE;
   }
 
   private boolean hasWinner(Player winner, Player loser) {
-    return winner.getScore() > 3 && loser.getScore() <= (winner.getScore() - 2);
+    return winner.getScore() > DEUCE_THRESHOLD && loser.getScore() <= (winner.getScore() - WINNING_DIFFERENCE);
+  }
+
+  private boolean hasDeuce() {
+    return player1.getScore() == player2.getScore() && player1.getScore() >= DEUCE_THRESHOLD;
   }
 
   public void score(Player player) {
