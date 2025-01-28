@@ -16,6 +16,12 @@ public class TennisGame {
       return player1.getName() + " wins!";
     } else if (player2.getScore() > 3 && player1.getScore() < player2.getScore() - 2) {
       return player2.getName() + " wins!";
+    } else if (player1.getScore() == player2.getScore() && player1.getScore() >= 3) {
+      return "Deuce!";
+    } else if (player1.getScore() > player2.getScore() && player1.getScore() >= 3) {
+      return "Advantage " + player1.getName() + "!";
+    } else if (player2.getScore() > player1.getScore() && player1.getScore() >= 3) {
+      return "Advantage " + player2.getName() + "!";
     } else {
       return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
     }

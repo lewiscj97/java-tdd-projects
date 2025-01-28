@@ -91,4 +91,45 @@ public class TestClass {
     assertEquals("40,15", score);
   }
 
+  @Test
+  public void getDeuce() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    String score = game.getScore();
+
+    assertEquals("Deuce!", score);
+  }
+
+  @Test
+  public void getDeuce_advantagePlayer1() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player1);
+    String score = game.getScore();
+
+    assertEquals("Advantage player 1!", score);
+  }
+
+  @Test
+  public void getDeuce_advantagePlayer2() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    String score = game.getScore();
+
+    assertEquals("Advantage player 2!", score);
+  }
+
 }
