@@ -28,6 +28,7 @@ public class TestClass {
   @Test
   public void tennisGameScoreAddsPointToPlayerScore() {
     game.score(player1);
+
     assertEquals(1, player1.getScore());
     assertEquals(0, player2.getScore());
   }
@@ -35,6 +36,7 @@ public class TestClass {
   @Test
   public void getScoreReturnsScoreInCorrectFormat_NilNil() {
     String score = game.getScore();
+
     assertEquals("0,0", score);
   }
 
@@ -42,7 +44,30 @@ public class TestClass {
   public void getScoreReturnsScoreInCorrectFormat_15Nill() {
     game.score(player1);
     String score = game.getScore();
+
     assertEquals("15,0", score);
+  }
+
+  @Test
+  public void getScoreReturnsScoreInCorrectFormat_Player1Wins() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    String score = game.getScore();
+
+    assertEquals("player 1 wins!", score);
+  }
+
+  @Test
+  public void getScoreReturnsScoreInCorrectFormat_Player2Wins() {
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    String score = game.getScore();
+
+    assertEquals("player 2 wins!", score);
   }
 
 }

@@ -12,7 +12,13 @@ public class TennisGame {
   Player player2;
 
   public String getScore() {
-    return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
+    if (player1.getScore() > 3 && player2.getScore() < player1.getScore() - 2) {
+      return player1.getName() + " wins!";
+    } else if (player2.getScore() > 3 && player1.getScore() < player2.getScore() - 2) {
+      return player2.getName() + " wins!";
+    } else {
+      return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
+    }
   }
 
   public void score(Player player) {
