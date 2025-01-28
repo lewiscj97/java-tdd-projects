@@ -12,19 +12,27 @@ public class TennisGame {
   Player player2;
 
   public String getScore() {
-    if (player1.getScore() > 3 && player2.getScore() <= (player1.getScore() - 2)) {
+    if (hasWinner(player1, player2)) {
       return player1.getName() + " wins!";
-    } else if (player2.getScore() > 3 && player1.getScore() <= player2.getScore() - 2) {
+    } else if (hasWinner(player2, player1)) {
       return player2.getName() + " wins!";
     } else if (player1.getScore() == player2.getScore() && player1.getScore() >= 3) {
       return "Deuce!";
-    } else if (player1.getScore() > 3 && player1.getScore() == player2.getScore() + 1) {
+    } else if (hasAdvantage(player1, player2)) {
       return "Advantage " + player1.getName() + "!";
-    } else if (player2.getScore() > 3 && player2.getScore() == player1.getScore() + 1) {
+    } else if (hasAdvantage(player2, player1)) {
       return "Advantage " + player2.getName() + "!";
     } else {
       return getTennisScore(player1.getScore()) + "," + getTennisScore(player2.getScore());
     }
+  }
+
+  private boolean hasAdvantage(Player advantaged, Player notAdvantaged) {
+    return advantaged.getScore() > 3 && advantaged.getScore() == notAdvantaged.getScore() + 1;
+  }
+
+  private boolean hasWinner(Player winner, Player loser) {
+    return winner.getScore() > 3 && loser.getScore() <= (winner.getScore() - 2);
   }
 
   public void score(Player player) {
