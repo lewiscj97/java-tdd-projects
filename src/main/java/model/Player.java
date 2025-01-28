@@ -1,12 +1,13 @@
 package model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public class Player {
 
   private final String name;
-  private double score;
+  @Setter private double score;
 
   public Player(String name) {
     this.name = name;

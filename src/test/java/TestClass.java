@@ -26,10 +26,10 @@ public class TestClass {
   }
 
   @Test
-  public void tennisGameScore() {
+  public void tennisGameScoreAddsPointToPlayerScore() {
     game.score(player1);
-
     assertEquals(1, player1.getScore());
+    assertEquals(0, player2.getScore());
   }
 
 }
