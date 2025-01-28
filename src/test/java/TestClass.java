@@ -25,4 +25,11 @@ public class TestClass {
     assertEquals(0, game.getPlayer2().getScore());
   }
 
+  @Test
+  public void tennisGameScore() {
+    game.score(player1);
+
+    assertEquals(1, player1.getScore());
+  }
+
 }
