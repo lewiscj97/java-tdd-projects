@@ -132,4 +132,65 @@ public class TestClass {
     assertEquals("Advantage player 2!", score);
   }
 
+  @Test
+  public void getDeuce_advantageReturnsToDeuce() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player1);
+    String score = game.getScore();
+
+    assertEquals("Deuce!", score);
+  }
+
+  @Test
+  public void getDeuce_player1WinsAfterDeuce() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player1);
+    game.score(player1);
+    String score = game.getScore();
+
+    assertEquals("player 1 wins!", score);
+  }
+
+  @Test
+  public void getDeuce_player2WinsAfterDeuce() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2);
+    String score = game.getScore();
+
+    assertEquals("player 2 wins!", score);
+  }
+
+  @Test
+  public void getDeuce_player2WinsAfterDeuceReturnsToDeuce() {
+    game.score(player1);
+    game.score(player1);
+    game.score(player1);
+    game.score(player2);
+    game.score(player2);
+    game.score(player2); // deuce
+    game.score(player2); // advantage player 1
+    game.score(player1); // deuce
+    game.score(player2); // advantage player 2
+    game.score(player2); // deuce
+    String score = game.getScore();
+
+    assertEquals("player 2 wins!", score);
+  }
 }
