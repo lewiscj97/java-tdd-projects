@@ -11,8 +11,12 @@ public class TennisGame {
   Player player1;
   Player player2;
 
+  public String getScore() {
+    return player1.getScore() + "," + player2.getScore();
+  }
+
   public void score(Player player) {
-    double currentScore = player.getScore();
+    int currentScore = player.getScore();
     player.setScore(currentScore + 1);
   }
 

@@ -32,4 +32,10 @@ public class TestClass {
     assertEquals(0, player2.getScore());
   }
 
+  @Test
+  public void getScoreReturnsScoreInCorrectFormat() {
+    String score = game.getScore();
+    assertEquals("0,0", score);
+  }
+
 }

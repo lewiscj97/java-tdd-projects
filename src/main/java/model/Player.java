@@ -7,7 +7,7 @@ import lombok.Setter;
 public class Player {
 
   private final String name;
-  @Setter private double score;
+  @Setter private int score;
 
   public Player(String name) {
     this.name = name;
