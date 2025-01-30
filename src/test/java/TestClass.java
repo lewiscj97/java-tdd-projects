@@ -13,22 +13,34 @@ public class TestClass {
   public void splitInputIntoArray() {
     String input = "Tadashi Takahiro Takao";
 
-    List<String> output = stringSorter.split(input);
+    List<String> output = stringSorter.sort(input);
 
-    assertEquals("Tadashi", output.get(0));
-    assertEquals("Takahiro", output.get(1));
+    assertEquals("Takahiro", output.get(0));
+    assertEquals("Tadashi", output.get(1));
     assertEquals("Takao", output.get(2));
   }
 
   @Test
   public void sortByNameLength() {
-    String input = "AAAAAAAAA AAA AAAAAA";
+    String input = "AAAAAA AAAAAAAAA";
 
     List<String> output = stringSorter.sort(input);
 
     assertEquals("AAAAAAAAA", output.get(0));
     assertEquals("AAAAAA", output.get(1));
+  }
+
+  @Test
+  public void sortByNameLength_TestInput() {
+    String input = "AA AAAA AAA AAAAA A";
+    List<String> output = stringSorter.sort(input);
+
+    assertEquals("AAAAA", output.get(0));
+    assertEquals("AAAA", output.get(1));
     assertEquals("AAA", output.get(2));
+    assertEquals("AA", output.get(3));
+    assertEquals("A", output.get(4));
+
   }
 
 }
