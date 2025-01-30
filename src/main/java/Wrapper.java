@@ -12,7 +12,7 @@ public class Wrapper {
       if (isSplitAtSpace(str, column)) {
         str = addRowToStringBuilder(str, column, sb);
       } else {
-        int splitIndex = getIndexOfLastSpace(input, column);
+        int splitIndex = getIndexOfLastSpace(str, column);
         str = addRowToStringBuilder(str, splitIndex, sb);
       }
     }
@@ -25,7 +25,7 @@ public class Wrapper {
   public static String addRowToStringBuilder(String str, int splitIndex, StringBuilder sb) {
     String substr = str.substring(0, splitIndex);
     sb.append(substr.trim()).append("\n");
-    return str.replace(substr, "");
+    return str.substring(splitIndex).trim();
   }
 
   public static int getIndexOfLastSpace(String input, int column) {
