@@ -52,4 +52,19 @@ public class TestClass {
     assertEquals("Takahiro", output.get(2));
   }
 
+  @Test
+  public void sortByAlphabetical_testInput() {
+    List<String> output = stringSorter.sort(TEST_INPUT);
+
+    assertEquals("Takehiko", output.get(0));
+    assertEquals("Takayuki", output.get(1));
+    assertEquals("Takahiro", output.get(2));
+    assertEquals("Takeshi", output.get(3));
+    assertEquals("Takeshi", output.get(4));
+    assertEquals("Takashi", output.get(5));
+    assertEquals("Tadashi", output.get(6));
+    assertEquals("Takeo", output.get(7));
+    assertEquals("Takao", output.get(8));
+  }
+
 }
