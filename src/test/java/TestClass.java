@@ -16,4 +16,16 @@ public class TestClass {
     assertEquals(expected, output);
   }
 
+  @Test
+  public void splitAtSpace_ThreeLines() {
+    String input = "Here is a test input for the function in an easy case";
+    int column = 20;
+
+    String expected = "Here is a test input\nfor the function in\nan easy case";
+
+    String output = Wrapper.wrap(input, column);
+
+    assertEquals(expected, output);
+  }
+
 }

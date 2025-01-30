@@ -8,10 +8,12 @@ public class Wrapper {
 
     String str = input;
 
-    if (input.charAt(column) == ' ') {
-      String substr = input.substring(0, column);
-      sb.append(substr).append("\n");
-      str = input.replace(substr, "");
+    while (str.length() > column) {
+      if (input.charAt(column) == ' ') {
+        String substr = str.substring(0, column);
+        sb.append(substr.trim()).append("\n");
+        str = str.replace(substr, "");
+      }
     }
 
     sb.append(str.trim());
