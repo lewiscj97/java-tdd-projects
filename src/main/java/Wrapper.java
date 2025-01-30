@@ -13,6 +13,11 @@ public class Wrapper {
         String substr = str.substring(0, column);
         sb.append(substr.trim()).append("\n");
         str = str.replace(substr, "");
+      } else {
+        int splitIndex = str.substring(0, column).lastIndexOf(" ");
+        String substr = str.substring(0, splitIndex);
+        sb.append(substr.trim()).append("\n");
+        str = str.replace(substr, "");
       }
     }
 
@@ -20,5 +25,4 @@ public class Wrapper {
 
     return sb.toString();
   }
-
 }

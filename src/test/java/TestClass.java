@@ -28,4 +28,16 @@ public class TestClass {
     assertEquals(expected, output);
   }
 
+  @Test
+  public void splitAtCharacter_TwoLines() {
+    String input = "This test input splits at a char";
+    int column = 20;
+
+    String expected = "This test input\nsplits at a char";
+
+    String output = Wrapper.wrap(input, column);
+
+    assertEquals(expected, output);
+  }
+
 }
