@@ -20,4 +20,15 @@ public class TestClass {
     assertEquals("Takao", output.get(2));
   }
 
+  @Test
+  public void sortByNameLength() {
+    String input = "AAAAAAAAA AAA AAAAAA";
+
+    List<String> output = stringSorter.sort(input);
+
+    assertEquals("AAAAAAAAA", output.get(0));
+    assertEquals("AAAAAA", output.get(1));
+    assertEquals("AAA", output.get(2));
+  }
+
 }
