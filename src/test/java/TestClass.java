@@ -4,13 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestClass {
 
-  Service service = new Service();
+  Wrapper wrapper = new Wrapper();
 
   @Test
   public void initialTest() {
-    String expected = "Hello, World!";
+    String input = "Here is a test input for the function";
+    int column = 20;
 
-    String output = service.helloWorld();
+    String expected = "Here is a test input\nfor the function";
+
+    String output = wrapper.wrap(input, column);
 
     assertEquals(expected, output);
   }
