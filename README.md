@@ -3,10 +3,42 @@
 This is a collection of Java projects and Katas built following Test-Driven Development (TDD).
 Each problem will have its own feature branch (`f-<project-name>`).
 
-## Problems
+## Name sort
 
-This is where the directory of problems will go, e.g.
+Suzuki needs help lining up his students!
 
-- Video store, [f-videostore](https://github.com/lewiscj97/java-tdd-projects/tree/f-videostore)
-- Product price list (calling REST APIs), [f-apicalls](https://github.com/lewiscj97/java-tdd-projects/tree/f-apicalls)
-- Tennis, [f-tennis](https://github.com/lewiscj97/java-tdd-projects/tree/f-tennis)
+Today Suzuki will be interviewing his students to ensure they are progressing in their training. He decided to schedule the interviews based on the length of the students name in descending order. The students will line up and wait for their turn.
+
+You will be given a string of student names. Sort them and return a list of names in descending order.
+
+Here is an example input:
+
+```
+string = 'Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi'
+```
+
+Here is an example return from your function:
+
+```
+lst = ['Takehiko',
+'Takayuki',
+'Takahiro',
+'Takeshi',
+'Takeshi',
+'Takashi',
+'Tadashi',
+'Takeo',
+'Takao']
+```
+
+Names of equal length will be returned in reverse alphabetical order (Z->A) such that:
+
+```
+string = "xxa xxb xxc xxd xa xb xc xd"
+```
+
+Returns:
+
+```
+['xxd', 'xxc', 'xxb', 'xxa', 'xd', 'xc', 'xb', 'xa']
+```
