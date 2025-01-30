@@ -11,3 +11,4 @@ This is where the directory of problems will go, e.g.
 - Product price list (calling REST APIs), [f-apicalls](https://github.com/lewiscj97/java-tdd-projects/tree/f-apicalls)
 - Tennis, [f-tennis](https://github.com/lewiscj97/java-tdd-projects/tree/f-tennis)
 - Name sort, [f-namesort](https://github.com/lewiscj97/java-tdd-projects/tree/f-namesort)
+- Word wrap, [f-wordwrap](https://github.com/lewiscj97/java-tdd-projects/tree/f-wordwrap)
