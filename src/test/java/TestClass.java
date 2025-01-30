@@ -31,7 +31,7 @@ public class TestClass {
   }
 
   @Test
-  public void sortByNameLength_TestInput() {
+  public void sortByNameLength_MoreInputs() {
     String input = "AA AAAA AAA AAAAA A";
     List<String> output = stringSorter.sort(input);
 
@@ -40,7 +40,16 @@ public class TestClass {
     assertEquals("AAA", output.get(2));
     assertEquals("AA", output.get(3));
     assertEquals("A", output.get(4));
+  }
 
+  @Test
+  public void sortByAlphabetical_allSameLength() {
+    String input = "Takayuki Takehiko Takahiro";
+    List<String> output = stringSorter.sort(input);
+
+    assertEquals("Takehiko", output.get(0));
+    assertEquals("Takayuki", output.get(1));
+    assertEquals("Takahiro", output.get(2));
   }
 
 }

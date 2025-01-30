@@ -16,7 +16,9 @@ public class StringSorter {
       String longestString = "";
 
       for (String s : splitInput) {
-        if (s.length() > longestString.length()) {
+        if (s.length() == longestString.length() && s.compareTo(longestString) > 0) {
+          longestString = s;
+        } else if (s.length() > longestString.length()) {
           longestString = s;
         }
       }
