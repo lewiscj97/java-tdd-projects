@@ -5,8 +5,8 @@ import model.*;
 
 @Slf4j
 public class VideoStore {
-  // should this be a method on the statement class instead?
-  // can this be made more OOP by extracting cost and points? does that make more sense?
+
+  // Would possibly make more sense for this to be static - future refactor?
   public Statement generateStatement(User user, Rental... rentals) {
     double totalCost = 0.0;
     int rentalPoints = 0;
